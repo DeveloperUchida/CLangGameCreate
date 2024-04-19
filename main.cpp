@@ -20,5 +20,12 @@ int main()
 
     //Windowを作成
     GLFWwindow* window = glfwCreateWindow(800,800, "OpenGL on MAC", NULL, NULL);
+    if(window == NULL)
+    {
+        std::cout << "Failed to create GLFW window" << std::endl;
+        glfwTerminate();
+        return -1;
+    }
     
+
 }
