@@ -3,15 +3,34 @@
 	"tasks": [
 		{
 			"type": "cppbuild",
-			"label": "C/C++: clang build active file",
-			"command": "/usr/bin/clang",
+			"label": "C/C++: clang++ build active file",
+			"command": "/usr/bin/clang++",
 			"args": [
+				"-std=c++17",
 				"-fcolor-diagnostics",
 				"-fansi-escape-codes",
+				"-Wall",
 				"-g",
-				"${file}",
+				"-I${workspaceFolder}/dependencies/include",
+				"-L${workspaceFolder}/dependencies/library",
+				"${workspaceFolder}/*.cpp",
+				"${workspaceFolder}/gl.c",
+				"${workspaceFolder}/dependencies/library/libglfw.3.dylib",
+				"-rpath",
+				"${workspaceFolder}/dependencies/library",
 				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}"
+				"${workspaceFolder}/app",
+				"-framework",
+				"OpenGL",
+				"-framework",
+				"Cocoa",
+				"-framework",
+				"IOKit",
+				"-framework",
+				"CoreVideo",
+				"-framework",
+				"CoreFoundation",
+				"-Wno-deprecated"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
@@ -23,7 +42,7 @@
 				"kind": "build",
 				"isDefault": true
 			},
-			"detail": "compiler: /usr/bin/clang"
+			"detail": "compiler: /usr/bin/clang++"
 		}
 	]
 }
